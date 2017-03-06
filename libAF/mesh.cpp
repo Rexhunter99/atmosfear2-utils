@@ -1,6 +1,9 @@
 
 #include "af2-mesh.h"
 
+#include <exception>
+#include <stdexcept>
+
 using namespace libAF2;
 
 
@@ -68,3 +71,64 @@ size_t	Mesh::getBoneCount() const
 {
 	return this->m_bones.size();
 }
+
+vertex_vector& Mesh::getVerticesVector( ) const
+{
+	return this->m_vertices;
+}
+
+triangle_vector& Mesh::getTrianglesVector( ) const
+{
+	return this->m_triangles;
+}
+
+bone_vector& Mesh::getBonesVector( ) const
+{
+	return this->m_bones;
+}
+
+void Mesh::addVertex( const Vertex& vertex )
+{
+	this->m_vertices.push_back(vertex);
+}
+
+void Mesh::addTriangle( const Triangle& triangle );
+{
+	this->m_vertices.push_back(triangle);
+}
+
+void Mesh::addBone( const Bone& bone );
+{
+	this->m_vertices.push_back(bone);
+}
+
+Vertex& Mesh::getVertex( const size_t& index )
+{
+	if ( index >= this->m_vertices.size() )
+	{
+		throw std::out_of_range("Mesh::getVertex() argument: index, the parameter is out of range!");
+	}
+
+	return this->m_vertices[index];
+}
+
+Triangle& Mesh::getTriangle( const size_t& index );
+{
+	if ( index >= this->m_triangles.size() )
+	{
+		throw std::out_of_range("Mesh::getTriangle() argument: index, the parameter is out of range!");
+	}
+
+	return this->m_triangles[index];
+}
+
+Bone& Mesh::getBone( const size_t& index )
+{
+	if ( index >= this->m_bones.size() )
+	{
+		throw std::out_of_range("Mesh::getBone() argument: index, the parameter is out of range!");
+	}
+
+	return this->m_bones[index];
+}
+

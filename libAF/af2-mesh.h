@@ -108,7 +108,6 @@ public:
 	std::string	getName() const;
 	void		setName( const std::string& name );
 
-
 	/**********************************************************************************
 		Get the number of elements that are stored internally and return it as a size_t
 		data type.
@@ -118,49 +117,12 @@ public:
 	size_t	getBoneCount() const;
 
 	/**********************************************************************************
-		Get the stored data as a raw blob, this copies the data to a pointer that the
-		user must take ownership of. Basically, this just helps protect the internal
-		vectors of elements from modification.
-		If you need to edit the internal data, externally, I have supplied access to
-		the vector iterators via functions below.
-	*/
-	size_t	getVerticesAsArray( intptr_t* );
-	size_t	getIndexedVerticesAsArray( intptr_t* );
-	size_t	getIndicesAsArray( intptr_t* );
-	size_t	getBonesAsArray( intptr_t* );
-
-
-	/***************************************************************************
-		Copy the stored data into new vectors and return them here.  The
-		returned vectors can be edited without affecting the internal elements.
-	*/
-	vertex_vector	getVertices( );
-	triangle_vector	getTriangles( );
-	bone_vector		getBones( );
-
-	/**********************************************************************************
 		Get the stored data as referenced vectors and return them here.  The returned
 		vector references are directly linked to the internal elements.
 	*/
-	vertex_vector&		getVerticesRef( ) const;
-	triangle_vector&	getTrianglesRef( ) const;
-	bone_vector&		getBonesRef( ) const;
-
-
-	/**********************************************************************************
-		Provide a means to access the iterators for the internal vector of elements.
-		This allows direct manipulation of values in the vectors.
-		Warning! Changing values via the iterators changes them in the instance of the
-		Mesh class that you are working with! For a 'safe' data set, use the
-		get*AsArray() methods instead.
-	*/
-	vertex_iterator		vertexFirst() const;	// equivilent to std::vector::begin()
-	vertex_iterator		vertexLast() const;	// equivilent to std::vector::end()
-	triangle_iterator	triangleFirst() const;	// equivilent to std::vector::begin()
-	triangle_iterator	triangleLast() const;	// equivilent to std::vector::end()
-	bone_iterator		boneFirst() const;	// equivilent to std::vector::begin()
-	bone_iterator		boneLast() const;	// equivilent to std::vector::end()
-
+	vertex_vector&		getVerticesVector( ) const;
+	triangle_vector&	getTrianglesVector( ) const;
+	bone_vector&		getBonesVector( ) const;
 
 	/**********************************************************************************
 		Add new elements to the internal vectors
@@ -168,6 +130,13 @@ public:
 	void addVertex( const Vertex& vertex );
 	void addTriangle( const Triangle& triangle );
 	void addBone( const Bone& bone );
+
+	/**********************************************************************************
+		Get an element from the internal vectors
+	*/
+	Vertex&		getVertex( const size_t& index );
+	Triangle&	getTriangle( const size_t& index );
+	Bone&		getBone( const size_t& index );
 
 private:
 
