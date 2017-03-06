@@ -1,5 +1,5 @@
 
-#incljude "af2-animation.h"
+#include "af2-animation.h"
 
 #include <exception>
 #include <stdexcept>
@@ -64,6 +64,11 @@ double Animation::getTime() const
 	if ( this->m_kps == 0 )
 	{
 		throw std::invalid_argument("Animation::getTime(), the member \'kps\' is 0!");
+	}
+
+	if ( this->m_frames.size() == 0 )
+	{
+		return 0;
 	}
 
 	return (double)this->m_frames.size() / (double)this->m_kps;

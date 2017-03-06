@@ -77,7 +77,7 @@ public:
 		int16_t		visible;	// This is used only by editor/viewer tools, the games ignore this.
 	};
 
-	/**********************************************************************************
+	/***************************************************************************
 		Special type definitions to simplify the class
 	*/
 	typedef std::vector<Vertex>		vertex_vector;
@@ -88,7 +88,7 @@ public:
 	typedef bone_vector::iterator		bone_iterator;
 
 
-	/**********************************************************************************
+	/***************************************************************************
 		Beginning of methods and operators
 	*/
 
@@ -124,15 +124,15 @@ public:
 		If you need to edit the internal data, externally, I have supplied access to
 		the vector iterators via functions below.
 	*/
-	size_t	getVerticesAsArray( intptr_t );
-	size_t	getIndexedVerticesAsArray( intptr_t );
-	size_t	getIndicesAsArray( intptr_t );
-	size_t	getBonesAsArray( intptr_t );
+	size_t	getVerticesAsArray( intptr_t* );
+	size_t	getIndexedVerticesAsArray( intptr_t* );
+	size_t	getIndicesAsArray( intptr_t* );
+	size_t	getBonesAsArray( intptr_t* );
 
 
-	/**********************************************************************************
-		Copy the stored data into new vectors and return them here.  The returned
-		vectors can be edited without affecting the internal elements.
+	/***************************************************************************
+		Copy the stored data into new vectors and return them here.  The
+		returned vectors can be edited without affecting the internal elements.
 	*/
 	vertex_vector	getVertices( );
 	triangle_vector	getTriangles( );
