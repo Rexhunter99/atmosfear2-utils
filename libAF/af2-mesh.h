@@ -14,10 +14,7 @@
 #include <vector>
 
 
-// Allow this header to be included separately from "af-files.h"
-#ifndef LIBAF2_NAMESPACE
 namespace libAF2 {
-#endif // LIBAF2_NAMESPACE
 
 
 class Mesh
@@ -53,6 +50,9 @@ public:
 		float		x, y, z;	// XYZ co-ordinates
 		int16_t		bone;		// Bone index, -1 for no bone.
 		int16_t		visible;	// This is used only by editor/viewer tools, the games ignore this.
+
+		Vertex();
+		Vertex(const Vertex& vertex);
 	};
 
 	class Triangle
@@ -66,6 +66,9 @@ public:
 		uint32_t	next;		// The next triangle to render, likely for transparency sorting
 		uint32_t	group;		// Assumed this is an editor feature, likely an index to a group of triangles.
 		uint32_t	reserved[4];// Reserved/unused data
+
+		Triangle();
+		Triangle(const Triangle& triangle);
 	};
 
 	class Bone
@@ -75,6 +78,9 @@ public:
 		float		x, y, z;	// XYZ co-ordinates
 		int16_t		parent;		// parent index, -1 means this bone is a root bone.
 		int16_t		visible;	// This is used only by editor/viewer tools, the games ignore this.
+
+		Bone();
+		Bone(const Bone& bone);
 	};
 
 	/***************************************************************************
@@ -150,8 +156,8 @@ private:
 
 };
 
-#ifndef LIBAF2_NAMESPACE
-};
-#endif // LIBAF2_NAMESPACE
+
+}; //namespace libAF2
+
 
 #endif // LIBAF2_MESH_H

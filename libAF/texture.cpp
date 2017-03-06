@@ -1,6 +1,7 @@
 
 #include "af2-texture.h"
 
+#include <cmath>
 #include <exception>
 #include <stdexcept>
 #include <cstring>

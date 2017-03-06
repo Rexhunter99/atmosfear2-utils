@@ -1,23 +1,20 @@
 /******************************************************************
-    @name	AtmosFEAR 2 Library
-    @author Rexhunter99
-    @date	6th March 2017
+    @name		AtmosFEAR 2 Library
+    @author 	Rexhunter99
+    @date		6th March 2017
+    @version	1
 */
 #pragma once
 
 #ifndef LIBAF2_TEXTURE_H
 #define LIBAF2_TEXTURE_H
 
-#include <cmath>
 #include <cstdint>
 #include <string>
 #include <vector>
 
 
-// Allow this header to be included separately from "af-files.h"
-#ifndef LIBAF2_NAMESPACE
 namespace libAF2 {
-#endif // LIBAF2_NAMESPACE
 
 
 class Texture
@@ -96,9 +93,8 @@ private:
 					m_height;
 };
 
-#ifndef LIBAF2_NAMESPACE
-};
-#endif // LIBAF2_NAMESPACE
+
+}; //namespace libAF2
 
 
 #endif // LIBAF2_TEXTURE_H

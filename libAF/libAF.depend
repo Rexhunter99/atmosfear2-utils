@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1488833810 source:c:\users\owner\documents\github\atmosfear2-utils\libaf\test_main.cpp
+	"af2-files.h"
+	<string>
+	<cstdint>
+	<iostream>
+
+1488833457 c:\users\owner\documents\github\atmosfear2-utils\libaf\af2-files.h
+	<string>
+	<cstdint>
+	<af2-mesh.h>
+	<af2-texture.h>
+	<af2-animation.h>
+	<af2-sound.h>
+	<af2-map.h>
+	<af2-resources.h>
+	<af2-loader.h>
+
+1488834314 c:\users\owner\documents\github\atmosfear2-utils\libaf\af2-mesh.h
+	<cstdint>
+	<string>
+	<vector>
+
+1488833487 c:\users\owner\documents\github\atmosfear2-utils\libaf\af2-texture.h
+	<cstdint>
+	<string>
+	<vector>
+
+1488833554 c:\users\owner\documents\github\atmosfear2-utils\libaf\af2-animation.h
+	<cstdint>
+	<array>
+	<string>
+	<vector>
+
+1488833507 c:\users\owner\documents\github\atmosfear2-utils\libaf\af2-sound.h
+	<cstdint>
+	<string>
+	<vector>
+
+1488833519 c:\users\owner\documents\github\atmosfear2-utils\libaf\af2-loader.h
+	<af2-mesh.h>
+	<af2-texture.h>
+	<af2-animation.h>
+	<af2-sound.h>
+

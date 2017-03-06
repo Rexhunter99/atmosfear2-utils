@@ -7,8 +7,8 @@
 */
 #pragma once
 
-#ifndef LIBAF2_TEXTURE_H
-#define LIBAF2_TEXTURE_H
+#ifndef LIBAF2_ANIMATION_H
+#define LIBAF2_ANIMATION_H
 
 #include <cstdint>
 #include <array>
@@ -16,10 +16,7 @@
 #include <vector>
 
 
-// Allow this header to be included separately from "af-files.h"
-#ifndef LIBAF2_NAMESPACE
 namespace libAF2 {
-#endif // LIBAF2_NAMESPACE
 
 
 class Animation
@@ -73,8 +70,8 @@ private:
 	uint32_t			m_kps; // need a better name for this
 };
 
-#ifndef LIBAF2_NAMESPACE
-};
-#endif // LIBAF2_NAMESPACE
+
+}; //namespace libAF2
+
 
 #endif // LIBAF2_ANIMATION_H

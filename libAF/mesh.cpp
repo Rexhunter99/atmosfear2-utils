@@ -7,6 +7,61 @@
 using namespace libAF2;
 
 
+Mesh::Vertex::Vertex()
+{
+
+}
+
+Mesh::Vertex::Vertex(const Vertex& vertex)
+{
+	this->x = vertex.x;
+	this->y = vertex.y;
+	this->z = vertex.z;
+	this->bone = vertex.bone;
+	this->visible = vertex.visible;
+}
+
+Mesh::Triangle::Triangle()
+{
+
+}
+
+Mesh::Triangle::Triangle(const Triangle& triangle)
+{
+	for (unsigned i=0; i<3; i++)
+	{
+		this->i[i] = triangle.i[i];
+		this->uv[0][i] = triangle.uv[0][i];
+		this->uv[1][i] = triangle.uv[1][i];
+	}
+	this->flags = triangle.flags;
+	this->dmask = triangle.dmask;
+	this->prev = triangle.prev;
+	this->next = triangle.next;
+	this->group = triangle.group;
+
+	for (unsigned i=0; i<4; i++)
+		{
+		this->reserved[i] = triangle.reserved[i];
+	}
+}
+
+Mesh::Bone::Bone()
+{
+
+}
+
+Mesh::Bone::Bone(const Bone& bone)
+{
+	this->name = bone.name;
+	this->x = bone.x;
+	this->y = bone.y;
+	this->z = bone.z;
+	this->parent = bone.parent;
+	this->visible = bone.visible;
+}
+
+
 Mesh::Mesh()
 {
 	this->m_name = "";
