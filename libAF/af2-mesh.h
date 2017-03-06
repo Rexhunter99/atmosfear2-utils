@@ -65,7 +65,7 @@ public:
 		uint32_t	prev;		// The previous triangle that rendered, likely for transparency sorting
 		uint32_t	next;		// The next triangle to render, likely for transparency sorting
 		uint32_t	group;		// Assumed this is an editor feature, likely an index to a group of triangles.
-		uint32_t	reserved[4];// Reserved/unused data
+		uint32_t	reserved[3];// Reserved/unused data
 
 		Triangle();
 		Triangle(const Triangle& triangle);

@@ -22,9 +22,17 @@
 #include <af2-sound.h>
 
 /*
-// AtmosFEAR 2 Area
+// AtmosFEAR 1 Area (Carnivores 1)
+#include <af1-map.h>
+#include <af1-resources.h>
+// AtmosFEAR 2 Area (Carnivores 2)
 #include <af2-map.h>
 #include <af2-resources.h>
+*/
+
+/*
+// AtmosFEAR 2 Text Formats
+#include <af2-restxt.h>
 */
 
 #include <af2-loader.h>
