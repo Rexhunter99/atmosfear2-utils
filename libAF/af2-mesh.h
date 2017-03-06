@@ -120,9 +120,9 @@ public:
 		Get the stored data as referenced vectors and return them here.  The returned
 		vector references are directly linked to the internal elements.
 	*/
-	vertex_vector&		getVerticesVector( ) const;
-	triangle_vector&	getTrianglesVector( ) const;
-	bone_vector&		getBonesVector( ) const;
+	std::vector<Vertex>&	getVerticesVector( );// const;
+	std::vector<Triangle>&	getTrianglesVector( );// const;
+	std::vector<Bone>&		getBonesVector( );// const;
 
 	/**********************************************************************************
 		Add new elements to the internal vectors

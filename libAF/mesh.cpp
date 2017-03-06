@@ -72,37 +72,37 @@ size_t	Mesh::getBoneCount() const
 	return this->m_bones.size();
 }
 
-vertex_vector& Mesh::getVerticesVector( ) const
+std::vector<Mesh::Vertex>& Mesh::getVerticesVector( )// const
 {
 	return this->m_vertices;
 }
 
-triangle_vector& Mesh::getTrianglesVector( ) const
+std::vector<Mesh::Triangle>& Mesh::getTrianglesVector( )// const
 {
 	return this->m_triangles;
 }
 
-bone_vector& Mesh::getBonesVector( ) const
+std::vector<Mesh::Bone>& Mesh::getBonesVector( )// const
 {
 	return this->m_bones;
 }
 
-void Mesh::addVertex( const Vertex& vertex )
+void Mesh::addVertex( const Mesh::Vertex& vertex )
 {
 	this->m_vertices.push_back(vertex);
 }
 
-void Mesh::addTriangle( const Triangle& triangle );
+void Mesh::addTriangle( const Mesh::Triangle& triangle )
 {
-	this->m_vertices.push_back(triangle);
+	this->m_triangles.push_back(triangle);
 }
 
-void Mesh::addBone( const Bone& bone );
+void Mesh::addBone( const Mesh::Bone& bone )
 {
-	this->m_vertices.push_back(bone);
+	this->m_bones.push_back(bone);
 }
 
-Vertex& Mesh::getVertex( const size_t& index )
+Mesh::Vertex& Mesh::getVertex( const size_t& index )
 {
 	if ( index >= this->m_vertices.size() )
 	{
@@ -112,7 +112,7 @@ Vertex& Mesh::getVertex( const size_t& index )
 	return this->m_vertices[index];
 }
 
-Triangle& Mesh::getTriangle( const size_t& index );
+Mesh::Triangle& Mesh::getTriangle( const size_t& index )
 {
 	if ( index >= this->m_triangles.size() )
 	{
@@ -122,7 +122,7 @@ Triangle& Mesh::getTriangle( const size_t& index );
 	return this->m_triangles[index];
 }
 
-Bone& Mesh::getBone( const size_t& index )
+Mesh::Bone& Mesh::getBone( const size_t& index )
 {
 	if ( index >= this->m_bones.size() )
 	{
