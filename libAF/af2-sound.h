@@ -30,6 +30,9 @@ public:
 
 	const uint32_t	getVersion() const { return this->version; }
 
+	std::string	getName() const;
+	void		setName( const std::string& name );
+
 	/***************************************************************************
 		@fn getWaveDataCopy()
 		@return int8_t* Pointer to an array of bytes
@@ -87,6 +90,7 @@ public:
 private:
 
 	const uint32_t	version = 2;
+	std::string		m_name;
 	int8_t*			m_data;
 	uint16_t		m_bitdepth;
 	uint16_t		m_channels;

@@ -7,6 +7,22 @@
 using namespace libAF2;
 
 
+Animation::Frame::Frame()
+{
+}
+
+Animation::Frame::Frame(const Animation::Frame& frame)
+{
+	this->vertex_table = frame.vertex_table;
+}
+
+Animation::Frame& Animation::Frame::operator= (const Animation::Frame& rhs)
+{
+	this->vertex_table = rhs.vertex_table;
+	return (*this);
+}
+
+
 Animation::Animation()
 {
 	this->m_name	= "";

@@ -27,6 +27,10 @@ public:
 	{
 	public:
 		std::vector<std::array<float, 3>>	vertex_table;
+
+		Frame();
+		Frame(const Frame& frame);
+		Frame& operator= (const Frame& rhs);
 	};
 
 

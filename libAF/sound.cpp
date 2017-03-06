@@ -53,6 +53,16 @@ Sound& Sound::operator=(const Sound& sound)
 }
 
 
+std::string Sound::getName() const
+{
+	return this->m_name;
+}
+
+void Sound::setName( const std::string& name )
+{
+	this->m_name = name;
+}
+
 const int8_t* Sound::getWaveDataCopy( )
 {
 	return reinterpret_cast<int8_t*>(this->m_data);
