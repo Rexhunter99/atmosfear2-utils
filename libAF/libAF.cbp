@@ -31,6 +31,7 @@ This library should build on any system with a compatible C++ compiler with C++1
 				<Option createDefFile="1" />
 				<Compiler>
 					<Add option="-Wall" />
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 				</Compiler>
 			</Target>
@@ -42,8 +43,9 @@ This library should build on any system with a compatible C++ compiler with C++1
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
 				<Compiler>
-					<Add option="-Wall" />
 					<Add option="-O2" />
+					<Add option="-Wall" />
+					<Add option="-std=c++11" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -59,6 +61,7 @@ This library should build on any system with a compatible C++ compiler with C++1
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-Wall" />
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 				</Compiler>
 			</Target>
@@ -71,9 +74,12 @@ This library should build on any system with a compatible C++ compiler with C++1
 				<Option createDefFile="1" />
 				<Option createStaticLib="1" />
 				<Compiler>
-					<Add option="-Wall" />
-					<Add option="-g" />
+					<Add option="-O2" />
+					<Add option="-std=c++11" />
 				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
 			</Target>
 		</Build>
 		<Unit filename="af2-animation.h" />
