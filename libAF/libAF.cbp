@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="libAF" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option show_notes="1">
+			<notes>
+				<![CDATA[Library AtmosFEAR
+==================================================
+
+Compiler: Requires a C++11 compatible compiler
+Libraries: Uses C++11 STL, no other libraries are required
+
+Output: Static Library or Dynamic Link Library with Import Library
+Output name: libAF
+
+Note that the library file names are postfixed with "s" for static library and "-dbg" for the debug library.
+
+This library should build on any system with a compatible C++ compiler with C++11 standards, it was written for the GNU C++ compiler.]]>
+			</notes>
+		</Option>
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/AFs-dbg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="build/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/AFs" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="build/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="Debug-DLL">
+				<Option output="bin/libAF-dbg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="build/Debug/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release-DLL">
+				<Option output="bin/libAF" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="build/Debug/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="af2-animation.h" />
+		<Unit filename="af2-files.h" />
+		<Unit filename="af2-mesh.h" />
+		<Unit filename="af2-texture.h" />
+		<Unit filename="animation.cpp" />
+		<Unit filename="mesh.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="texture.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
