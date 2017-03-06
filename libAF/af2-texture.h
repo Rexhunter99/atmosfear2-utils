@@ -40,7 +40,7 @@ public:
 		Returns a copy of the internal pixel data that the user must safely free.
 		You can use std::unique_ptr to ensure no memory leaks occur.
 	*/
-	const float*	getPixels( ) const;
+	const float*	getPixels( );
 
 	/***************************************************************************
 		@fn getPixelsInternal()

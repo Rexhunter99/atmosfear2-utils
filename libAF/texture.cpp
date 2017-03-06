@@ -90,16 +90,16 @@ Texture& Texture::operator=(const Texture& texture)
 
 	std::memcpy(this->m_pixels, texture.m_pixels, ( this->m_width * sizeof(Pixel) ) * this->m_height );
 
-	return (*this)
+	return (*this);
 }
 
 
-const float* Texture::getPixelsInternal( ) const;
+const float* Texture::getPixelsInternal( ) const
 {
 	return reinterpret_cast<float*>(this->m_pixels);
 }
 
-const intptr_t Texture::getPixels( PixelFormatEnum format ) const;
+const float* Texture::getPixels( )
 {
 	Pixel* pixels = new Pixel [ this->m_width * this->m_height ];
 	std::memcpy(this->m_pixels, pixels, ( this->m_width * sizeof(Pixel) ) * this->m_height );
@@ -107,12 +107,12 @@ const intptr_t Texture::getPixels( PixelFormatEnum format ) const;
 	return reinterpret_cast<float*>(pixels);
 }
 
-uint32_t Texture::getWidth() const;
+uint32_t Texture::getWidth() const
 {
 	return this->m_width;
 }
 
-uint32_t Texture::getHeight() const;
+uint32_t Texture::getHeight() const
 {
 	return this->m_height;
 }
