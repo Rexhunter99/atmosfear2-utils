@@ -13,7 +13,7 @@ Animation::Animation()
 	this->m_kps		= 1;
 }
 
-Animation:::Animation( const Animation& animation )
+Animation::Animation( const Animation& animation )
 {
 	this->m_name	= animation.m_name;
 	this->m_kps		= animation.m_kps;
@@ -74,7 +74,7 @@ double Animation::getTime() const
 	return (double)this->m_frames.size() / (double)this->m_kps;
 }
 
-std::vector<Frame> Animation::getFrames() const
+std::vector<Animation::Frame> Animation::getFrames() const
 {
 	return this->m_frames;
 }
@@ -84,7 +84,7 @@ size_t Animation::getFrameCount() const
 	return this->m_frames.size();
 }
 
-Frame Animation::getFrame(size_t frame)
+Animation::Frame Animation::getFrame(size_t frame)
 {
 	if ( this->m_frames.size() == 0 )
 	{
@@ -98,7 +98,7 @@ Frame Animation::getFrame(size_t frame)
 	return this->m_frames[frame];
 }
 
-void Animation::addFrame(const Frame& frame)
+void Animation::addFrame(const Animation::Frame& frame)
 {
 	this->m_frames.push_back(frame);
 }

@@ -11,6 +11,7 @@
 #define LIBAF2_TEXTURE_H
 
 #include <cstdint>
+#include <array>
 #include <string>
 #include <vector>
 
@@ -38,7 +39,7 @@ public:
 
 	Animation& operator= (const Animation& animation);
 
-	cosnt uint32_t	getVersion() const {return this->version;}
+	const uint32_t	getVersion() const {return this->version;}
 
 	std::string		getName() const;
 	void			setName( const std::string& name );
