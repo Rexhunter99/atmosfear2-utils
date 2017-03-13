@@ -108,11 +108,12 @@ bool FileLoader::loadCharacterFile( const std::string& file_name, Character& cha
 */
 
 	// Texture block (please forgive me!)
+	int t_height = (obj.texture_length / 2) / 256;
 	obj.texture_data = new int16_t [ obj.texture_length / 2 ];
 	file.read( (char*)obj.texture_data, obj.texture_length );
-	float* texture_data = new float [ ( 256 * 4 ) * 256 ];
+	float* texture_data = new float [ ( 256 * 4 ) * t_height ];
 
-	for ( unsigned i = 0; i < 256 * 256; i++ )
+	for ( unsigned i = 0; i < 256 * t_height; i++ )
 	{
 		uint16_t c = obj.texture_data[i];
 		texture_data[ (i * 4) + 0 ] = ( (c>>0 ) & 31 ) / 31.0f;
@@ -121,11 +122,11 @@ bool FileLoader::loadCharacterFile( const std::string& file_name, Character& cha
 		texture_data[ (i * 4) + 3 ] = ( !c ) ? 0.0f : 1.0f;
 	}
 
-	character.texture.setPixels( 256, 256, texture_data );
+	character.texture.setPixels( 256, t_height, texture_data );
 
 	delete [] texture_data;
-	texture_data = nullptr;
 	delete [] obj.texture_data;
+	texture_data = nullptr;
 	obj.texture_data = nullptr;
 
 	// Animation block

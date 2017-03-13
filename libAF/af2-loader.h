@@ -46,9 +46,57 @@ public:
 	FileLoader();
 	virtual ~FileLoader();
 
+	/***************************************************************************
+		@fn loadCharacterFile( file_name, character )
+		@param file_name A string containing the file name and path to load from
+		@param character A reference of an instance of the Character class to load into
+		@return bool <true> if the file successfully loaded without isse, <false> if otherwise
+	*/
     static bool loadCharacterFile( const std::string& file_name, Character& character );
+
+    /***************************************************************************
+		@fn loadObjectFile( file_name, object )
+		@param file_name A string containing the file name and path to load from
+		@param object A reference of an instance of the Object class to load into
+		@return bool <true> if the file successfully loaded without isse, <false> if otherwise
+	*/
     static bool loadObjectFile( const std::string& file_name, Object& object );
 
+    /***************************************************************************
+		@fn saveCharacterFile( file_name, character )
+		@param file_name A string containing the file name and path to save to
+		@param character A reference of an instance of the Character class to save from
+		@return bool <true> if the file successfully saved without isse, <false> if otherwise
+		@todo: implement
+	*/
+    static bool saveCharacterFile( const std::string& file_name, const Character& character );
+
+    /***************************************************************************
+		@fn saveObjectFile( file_name, object )
+		@param file_name A string containing the file name and path to save to
+		@param object A reference of an instance of the Object class to save from
+		@return bool <true> if the file successfully saved without isse, <false> if otherwise
+		@todo: implement
+	*/
+    static bool saveObjectFile( const std::string& file_name, const Object& object );
+
+	/***************************************************************************
+		@fn loadObjectFile( file_name, object )
+		@param file_name A string containing the file name and path to load from
+		@param object A reference of an instance of the Object class to load into
+		@return bool <true> if the file successfully loaded without isse, <false> if otherwise
+
+		@todo: Better name...?
+		@todo: implement
+    */
+    static bool saveVertexTransformedList( const std::string& file_name, const Animation& animation );
+
+    /***************************************************************************
+		@var enableExceptions
+		Setting this to true will allow FileLoader static methods to throw C++
+		exceptions
+		@todo: Implement exceptions
+    */
     static bool enableExceptions;
 };
 
