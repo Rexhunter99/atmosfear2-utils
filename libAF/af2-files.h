@@ -41,6 +41,16 @@
 
 
 namespace libAF2 {
+
+/***************************************************************************
+	@var enableExceptions
+	@namespace libAF2
+	Setting this to true will allow FileLoader static methods to throw C++
+	exceptions
+	@todo: Implement exceptions
+*/
+extern bool enableExceptions;
+
 };
 
 

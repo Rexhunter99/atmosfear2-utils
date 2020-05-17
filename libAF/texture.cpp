@@ -23,120 +23,97 @@ const int16_t format_pixel_size[] = {
 };
 
 
-Texture::Pixel::Pixel( )
+Texture::Texture() :
+	m_width(0),
+	m_height(0)
 {
-	r = 0.0f;
-	g = 0.0f;
-	b = 0.0f;
-	a = 0.0f;
 }
 
-Texture::Pixel::Pixel( float red, float green, float blue, float alpha )
+Texture::Texture( const Texture& other ) :
+	m_width	(other.m_width),
+	m_height(other.m_height)
 {
-	r = red;
-	g = green;
-	b = blue;
-	a = alpha;
-}
-
-Texture::Pixel::Pixel(const Texture::Pixel& pixel)
-{
-	r = pixel.r;
-	g = pixel.g;
-	b = pixel.b;
-	a = pixel.a;
-}
-
-Texture::Pixel& Texture::Pixel::operator= (const Texture::Pixel& pixel)
-{
-	r = pixel.r;
-	g = pixel.g;
-	b = pixel.b;
-	a = pixel.a;
-	return (*this);
-}
-
-
-Texture::Texture()
-{
-	this->m_width = 0;
-	this->m_height = 0;
-	this->m_pixels = nullptr;
-}
-
-Texture::Texture( const Texture& texture )
-{
-	this->m_width = texture.m_width;
-	this->m_height = texture.m_height;
-
-	this->m_pixels = new Pixel [ this->m_width * this->m_height ];
-
-	std::memcpy(this->m_pixels, texture.m_pixels, ( this->m_width * sizeof(Pixel) ) * this->m_height );
+	m_pixels.insert(m_pixels.end(), other.m_pixels.begin(), other.m_pixels.end());
 }
 
 Texture::~Texture()
 {
-	if ( this->m_pixels != nullptr )
-	{
-		delete [] this->m_pixels;
-	}
+	m_pixels.clear();
 }
 
-Texture& Texture::operator=(const Texture& texture)
+Texture& Texture::operator=(const Texture& rhs)
 {
-	this->m_width = texture.m_width;
-	this->m_height = texture.m_height;
+	if (this == &rhs) return (*this);
 
-	this->m_pixels = new Pixel [ this->m_width* this->m_height ];
+	m_width = rhs.m_width;
+	m_height = rhs.m_height;
 
-	std::memcpy(this->m_pixels, texture.m_pixels, ( this->m_width * sizeof(Pixel) ) * this->m_height );
+	m_pixels.clear();
+	m_pixels.insert(m_pixels.end(), rhs.m_pixels.begin(), rhs.m_pixels.end());
 
 	return (*this);
 }
 
 
-const float* Texture::getPixelsInternal( ) const
+std::vector<uint32_t>& Texture::getPixelsInternal( )
 {
-	return reinterpret_cast<float*>(this->m_pixels);
+	return m_pixels;
 }
 
-const float* Texture::getPixels( )
+std::vector<uint32_t> Texture::getPixels( )
 {
-	Pixel* pixels = new Pixel [ this->m_width * this->m_height ];
-	std::memcpy(this->m_pixels, pixels, ( this->m_width * sizeof(Pixel) ) * this->m_height );
-
-	return reinterpret_cast<float*>(pixels);
+	return m_pixels;
 }
 
 uint32_t Texture::getWidth() const
 {
-	return this->m_width;
+	return m_width;
 }
 
 uint32_t Texture::getHeight() const
 {
-	return this->m_height;
+	return m_height;
 }
 
 
-void Texture::setPixels( const uint32_t& width, const uint32_t& height, const float* pixels )
+void Texture::setPixels( const uint32_t& width, const uint32_t& height, std::vector<uint32_t>& pixels )
 {
-	if ( width == 0 || height == 0 || pixels == nullptr )
-	{
-		//TODO: Throw an exception
-		return;
-	}
+	if (!width || width >= 16384)
+		throw std::invalid_argument("Invalid argument: `width`");
+	if (!height || height >= 16384)
+		throw std::invalid_argument("Invalid argument: `height`");
+	if (pixels.empty() || pixels.size() < width*height)
+		throw std::invalid_argument("Invalid argument: `pixels`");
 
-	if ( this->m_pixels != nullptr )
-	{
-		delete [] this->m_pixels;
-		this->m_pixels = nullptr;
-	}
-	// TODO: Check that the dimensions don't exceed "16384"
-	this->m_width = width;
-	this->m_height = height;
-	this->m_pixels = new Pixel [ width * height ];
+	m_width = width;
+	m_height = height;
 
-	std::memcpy(this->m_pixels, pixels, ( this->m_width * sizeof(Pixel) ) * this->m_height );
+	m_pixels.clear();
+	m_pixels.insert(m_pixels.end(), pixels.begin(), pixels.begin() + (width*height));
 }
 
+void Texture::setPixels( const uint32_t& width, const uint32_t& height, std::vector<uint16_t>& pixels )
+{
+	if (!width || width >= 16384)
+		throw std::invalid_argument("Invalid argument: `width`");
+	if (!height || height >= 16384)
+		throw std::invalid_argument("Invalid argument: `height`");
+	if (pixels.empty() || pixels.size() < width*height)
+		throw std::invalid_argument("Invalid argument: `pixels`");
+
+	m_pixels.clear();
+
+	for (auto pix: pixels)
+	{
+		uint32_t c = 0;
+		uint8_t* pc = (uint8_t*)&c;
+		*(pc + 0) = ( (pix>>0 ) & 31 ) * 8; //0-248
+		*(pc + 1) = ( (pix>>5 ) & 31 ) * 8;
+		*(pc + 2) = ( (pix>>10) & 31 ) * 8;
+		*(pc + 3) = ( (pix & 0x7FFF) == 0 ) ? 0 : 255;
+		m_pixels.push_back(c);
+	}
+
+	m_width = width;
+	m_height = height;
+}

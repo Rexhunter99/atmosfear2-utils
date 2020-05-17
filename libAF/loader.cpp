@@ -8,7 +8,7 @@
 using namespace libAF2;
 
 
-bool FileLoader::enableExceptions = false;
+bool libAF2::enableExceptions = false;
 
 
 bool FileLoader::loadCharacterFile( const std::string& file_name, Character& character )
@@ -19,7 +19,7 @@ bool FileLoader::loadCharacterFile( const std::string& file_name, Character& cha
 
 	if ( !file.is_open() )
 	{
-		if ( FileLoader::enableExceptions )
+		if ( enableExceptions )
 		{
 			// throw an exception
 		}
@@ -35,7 +35,7 @@ bool FileLoader::loadCharacterFile( const std::string& file_name, Character& cha
 		uint32_t	num_vertices;
 		uint32_t	num_triangles;
 		uint32_t	texture_length;
-		int16_t*	texture_data;
+		std::vector<uint16_t>	texture_data;
 		uint32_t	anim_sfx[16];
 	} obj;
 
@@ -109,25 +109,9 @@ bool FileLoader::loadCharacterFile( const std::string& file_name, Character& cha
 
 	// Texture block (please forgive me!)
 	int t_height = (obj.texture_length / 2) / 256;
-	obj.texture_data = new int16_t [ obj.texture_length / 2 ];
-	file.read( (char*)obj.texture_data, obj.texture_length );
-	float* texture_data = new float [ ( 256 * 4 ) * t_height ];
-
-	for ( unsigned i = 0; i < 256 * t_height; i++ )
-	{
-		uint16_t c = obj.texture_data[i];
-		texture_data[ (i * 4) + 0 ] = ( (c>>0 ) & 31 ) / 31.0f;
-		texture_data[ (i * 4) + 1 ] = ( (c>>5 ) & 31 ) / 31.0f;
-		texture_data[ (i * 4) + 2 ] = ( (c>>10) & 31 ) / 31.0f;
-		texture_data[ (i * 4) + 3 ] = ( !c ) ? 0.0f : 1.0f;
-	}
-
-	character.texture.setPixels( 256, t_height, texture_data );
-
-	delete [] texture_data;
-	delete [] obj.texture_data;
-	texture_data = nullptr;
-	obj.texture_data = nullptr;
+	obj.texture_data.reserve(256 * t_height);
+	file.read( (char*)obj.texture_data.data(), obj.texture_length );
+	character.texture.setPixels( 256, t_height, obj.texture_data );
 
 	// Animation block
 	for ( unsigned i = 0; i < obj.num_anims; i++ )
@@ -137,7 +121,7 @@ bool FileLoader::loadCharacterFile( const std::string& file_name, Character& cha
 		uint32_t	kps = 0;
 		uint32_t	num_frames = 0;
 
-		uint32_t	pos = file.tellg();
+		//uint32_t	pos = file.tellg();
 
 		file.read( name, 32 );
 		file.read( (char*)&kps, sizeof(uint32_t) );
@@ -176,19 +160,16 @@ bool FileLoader::loadCharacterFile( const std::string& file_name, Character& cha
 		Sound	snd;
 		char		name[32];
 		uint32_t	length = 0;
-		int8_t*	snd_data = nullptr;
+		std::vector<int16_t>	snd_data;
 
 		file.read( name, 32 );
 		file.read( (char*)&length, sizeof(uint32_t) );
 
-		snd_data = new int8_t [ length ];
-
-		file.read( (char*)snd_data, length );
+		snd_data.reserve(length/sizeof(int16_t));
+		file.read( (char*)snd_data.data(), length );
 
 		snd.setName(name);
 		snd.setWaveData( 16, 1, length, 22050, snd_data );
-
-		delete [] snd_data;
 
 		character.sounds.push_back(snd);
 	}
@@ -206,13 +187,13 @@ bool FileLoader::loadCharacterFile( const std::string& file_name, Character& cha
 
 bool FileLoader::loadObjectFile( const std::string& file_name, Object& object )
 {
-	std::fstream file;
+	std::ifstream file;
 
-	file.open(file_name, std::ios::in | std::ios::binary);
+	file.open(file_name, std::ios::binary);
 
 	if ( !file.is_open() )
 	{
-		if ( FileLoader::enableExceptions )
+		if ( enableExceptions )
 		{
 			// throw an exception
 		}
@@ -226,7 +207,7 @@ bool FileLoader::loadObjectFile( const std::string& file_name, Object& object )
 		uint32_t	num_triangles;
 		uint32_t	num_bones;
 		uint32_t	texture_length;
-		int16_t*	texture_data;
+		std::vector<uint16_t>	texture_data;
 	} obj;
 
 	// Header block
@@ -293,25 +274,10 @@ bool FileLoader::loadObjectFile( const std::string& file_name, Object& object )
 	}
 
 	// Texture block (please forgive me!)
-	obj.texture_data = new int16_t [ obj.texture_length / 2 ];
-	file.read( (char*)obj.texture_data, obj.texture_length );
-	float* texture_data = new float [ ( 256 * 4 ) * 256 ];
-
-	for ( unsigned i = 0; i < 256 * 256; i++ )
-	{
-		uint16_t c = obj.texture_data[i];
-		texture_data[ (i * 4) + 0 ] = ( (c>>0 ) & 31 ) / 31.0f;
-		texture_data[ (i * 4) + 1 ] = ( (c>>5 ) & 31 ) / 31.0f;
-		texture_data[ (i * 4) + 2 ] = ( (c>>10) & 31 ) / 31.0f;
-		texture_data[ (i * 4) + 3 ] = ( !c ) ? 0.0f : 1.0f;
-	}
-
-	object.texture.setPixels( 256, 256, texture_data );
-
-	delete [] texture_data;
-	texture_data = nullptr;
-	delete [] obj.texture_data;
-	obj.texture_data = nullptr;
+	int t_height = (obj.texture_length / 2) / 256;
+	obj.texture_data.reserve(256 * t_height);
+	file.read( (char*)obj.texture_data.data(), obj.texture_length );
+	object.texture.setPixels( 256, t_height, obj.texture_data );
 
 	file.close();
 

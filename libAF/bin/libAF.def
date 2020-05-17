@@ -1,7 +1,7 @@
 EXPORTS
-    _ZN6libAF210FileLoader14loadObjectFileERKSsRNS_6ObjectE @1
-    _ZN6libAF210FileLoader16enableExceptionsE @2 DATA
-    _ZN6libAF210FileLoader17loadCharacterFileERKSsRNS_9CharacterE @3
+    _ZN6libAF210FileLoader14loadObjectFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERNS_6ObjectE @1
+    _ZN6libAF210FileLoader17loadCharacterFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERNS_9CharacterE @2
+    _ZN6libAF216enableExceptionsE @3 DATA
     _ZN6libAF24Mesh11addTriangleERKNS0_8TriangleE @4
     _ZN6libAF24Mesh11getTriangleERKj @5
     _ZN6libAF24Mesh14getBonesVectorEv @6
@@ -17,7 +17,7 @@ EXPORTS
     _ZN6libAF24Mesh6VertexC2Ev @16
     _ZN6libAF24Mesh7addBoneERKNS0_4BoneE @17
     _ZN6libAF24Mesh7getBoneERKj @18
-    _ZN6libAF24Mesh7setNameERKSs @19
+    _ZN6libAF24Mesh7setNameERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @19
     _ZN6libAF24Mesh8TriangleC1ERKS1_ @20
     _ZN6libAF24Mesh8TriangleC1Ev @21
     _ZN6libAF24Mesh8TriangleC2ERKS1_ @22
@@ -32,90 +32,89 @@ EXPORTS
     _ZN6libAF24MeshD2Ev @31
     _ZN6libAF24MeshaSERKS0_ @32
     _ZN6libAF24MeshplERKS0_ @33
-    _ZN6libAF25Sound11setWaveDataEttjjPKa @34
-    _ZN6libAF25Sound15getWaveDataCopyEv @35
-    _ZN6libAF25Sound7setNameERKSs @36
-    _ZN6libAF25SoundC1ERKS0_ @37
-    _ZN6libAF25SoundC1Ev @38
-    _ZN6libAF25SoundC2ERKS0_ @39
-    _ZN6libAF25SoundC2Ev @40
-    _ZN6libAF25SoundD1Ev @41
-    _ZN6libAF25SoundD2Ev @42
-    _ZN6libAF25SoundaSERKS0_ @43
-    _ZN6libAF27Texture5PixelC1ERKS1_ @44
-    _ZN6libAF27Texture5PixelC1Effff @45
-    _ZN6libAF27Texture5PixelC1Ev @46
-    _ZN6libAF27Texture5PixelC2ERKS1_ @47
-    _ZN6libAF27Texture5PixelC2Effff @48
-    _ZN6libAF27Texture5PixelC2Ev @49
-    _ZN6libAF27Texture5PixelaSERKS1_ @50
-    _ZN6libAF27Texture9getPixelsEv @51
-    _ZN6libAF27Texture9setPixelsERKjS2_PKf @52
-    _ZN6libAF27TextureC1ERKS0_ @53
-    _ZN6libAF27TextureC1Ev @54
-    _ZN6libAF27TextureC2ERKS0_ @55
-    _ZN6libAF27TextureC2Ev @56
-    _ZN6libAF27TextureD1Ev @57
-    _ZN6libAF27TextureD2Ev @58
-    _ZN6libAF27TextureaSERKS0_ @59
-    _ZN6libAF29Animation5FrameC1ERKS1_ @60
-    _ZN6libAF29Animation5FrameC1Ev @61
-    _ZN6libAF29Animation5FrameC2ERKS1_ @62
-    _ZN6libAF29Animation5FrameC2Ev @63
-    _ZN6libAF29Animation5FrameaSERKS1_ @64
-    _ZN6libAF29Animation6setKPSERKj @65
-    _ZN6libAF29Animation7setNameERKSs @66
-    _ZN6libAF29Animation8addFrameERKNS0_5FrameE @67
-    _ZN6libAF29Animation8getFrameEj @68
-    _ZN6libAF29AnimationC1ERKS0_ @69
-    _ZN6libAF29AnimationC1Ev @70
-    _ZN6libAF29AnimationC2ERKS0_ @71
-    _ZN6libAF29AnimationC2Ev @72
-    _ZN6libAF29AnimationD1Ev @73
-    _ZN6libAF29AnimationD2Ev @74
-    _ZN6libAF29AnimationaSERKS0_ @75
-    _ZNK6libAF24Mesh12getBoneCountEv @76
-    _ZNK6libAF24Mesh14getVertexCountEv @77
-    _ZNK6libAF24Mesh16getTriangleCountEv @78
-    _ZNK6libAF24Mesh7getNameEv @79
-    _ZNK6libAF25Sound11getBitDepthEv @80
-    _ZNK6libAF25Sound11getChannelsEv @81
-    _ZNK6libAF25Sound11getWaveDataEv @82
-    _ZNK6libAF25Sound12getFrequencyEv @83
-    _ZNK6libAF25Sound7getNameEv @84
-    _ZNK6libAF25Sound9getLengthEv @85
-    _ZNK6libAF27Texture17getPixelsInternalEv @86
-    _ZNK6libAF27Texture8getWidthEv @87
-    _ZNK6libAF27Texture9getHeightEv @88
-    _ZNK6libAF29Animation13getFrameCountEv @89
-    _ZNK6libAF29Animation6getKPSEv @90
-    _ZNK6libAF29Animation7getNameEv @91
-    _ZNK6libAF29Animation7getTimeEv @92
-    _ZNK6libAF29Animation9getFramesEv @93
-    _ZNSt6vectorIN6libAF24Mesh4BoneESaIS2_EE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPKS2_S4_EEEEvNS7_IPS2_S4_EET_SD_St20forward_iterator_tag @94
-    _ZNSt6vectorIN6libAF24Mesh4BoneESaIS2_EE19_M_emplace_back_auxIIRKS2_EEEvDpOT_ @95
-    _ZNSt6vectorIN6libAF24Mesh4BoneESaIS2_EED1Ev @96
-    _ZNSt6vectorIN6libAF24Mesh4BoneESaIS2_EEaSERKS4_ @97
-    _ZNSt6vectorIN6libAF24Mesh6VertexESaIS2_EE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPKS2_S4_EEEEvNS7_IPS2_S4_EET_SD_St20forward_iterator_tag @98
-    _ZNSt6vectorIN6libAF24Mesh6VertexESaIS2_EE19_M_emplace_back_auxIIRKS2_EEEvDpOT_ @99
-    _ZNSt6vectorIN6libAF24Mesh6VertexESaIS2_EEaSERKS4_ @100
-    _ZNSt6vectorIN6libAF24Mesh8TriangleESaIS2_EE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPKS2_S4_EEEEvNS7_IPS2_S4_EET_SD_St20forward_iterator_tag @101
-    _ZNSt6vectorIN6libAF24Mesh8TriangleESaIS2_EE19_M_emplace_back_auxIIRKS2_EEEvDpOT_ @102
-    _ZNSt6vectorIN6libAF24Mesh8TriangleESaIS2_EEaSERKS4_ @103
-    _ZNSt6vectorIN6libAF25SoundESaIS1_EE19_M_emplace_back_auxIIRKS1_EEEvDpOT_ @104
-    _ZNSt6vectorIN6libAF29Animation5FrameESaIS2_EE19_M_emplace_back_auxIIRKS2_EEEvDpOT_ @105
-    _ZNSt6vectorIN6libAF29Animation5FrameESaIS2_EED1Ev @106
-    _ZNSt6vectorIN6libAF29Animation5FrameESaIS2_EEaSERKS4_ @107
-    _ZNSt6vectorIN6libAF29AnimationESaIS1_EE19_M_emplace_back_auxIIRKS1_EEEvDpOT_ @108
-    _ZNSt6vectorISt5arrayIfLj3EESaIS1_EE19_M_emplace_back_auxIIRKS1_EEEvDpOT_ @109
-    _ZNSt6vectorISt5arrayIfLj3EESaIS1_EEaSERKS3_ @110
-    _ZNSt6vectorIjSaIjEE19_M_emplace_back_auxIIRKjEEEvDpOT_ @111
-    _ZTISt11logic_error @112 DATA
-    _ZTISt12out_of_range @113 DATA
-    _ZTISt16invalid_argument @114 DATA
-    _ZTISt9exception @115 DATA
-    _ZTSSt11logic_error @116 DATA
-    _ZTSSt12out_of_range @117 DATA
-    _ZTSSt16invalid_argument @118 DATA
-    _ZTSSt9exception @119 DATA
-    _get_output_format @120
+    _ZN6libAF25Sound11getWaveDataEv @34
+    _ZN6libAF25Sound11setWaveDataEttjjRSt6vectorIsSaIsEE @35
+    _ZN6libAF25Sound19getWaveDataInternalEv @36
+    _ZN6libAF25Sound7setNameERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @37
+    _ZN6libAF25SoundC1ERKS0_ @38
+    _ZN6libAF25SoundC1Ev @39
+    _ZN6libAF25SoundC2ERKS0_ @40
+    _ZN6libAF25SoundC2Ev @41
+    _ZN6libAF25SoundD1Ev @42
+    _ZN6libAF25SoundD2Ev @43
+    _ZN6libAF25SoundaSERKS0_ @44
+    _ZN6libAF27Texture17getPixelsInternalEv @45
+    _ZN6libAF27Texture9getPixelsEv @46
+    _ZN6libAF27Texture9setPixelsERKjS2_RSt6vectorIjSaIjEE @47
+    _ZN6libAF27Texture9setPixelsERKjS2_RSt6vectorItSaItEE @48
+    _ZN6libAF27TextureC1ERKS0_ @49
+    _ZN6libAF27TextureC1Ev @50
+    _ZN6libAF27TextureC2ERKS0_ @51
+    _ZN6libAF27TextureC2Ev @52
+    _ZN6libAF27TextureD1Ev @53
+    _ZN6libAF27TextureD2Ev @54
+    _ZN6libAF27TextureaSERKS0_ @55
+    _ZN6libAF29Animation5FrameC1ERKS1_ @56
+    _ZN6libAF29Animation5FrameC1Ev @57
+    _ZN6libAF29Animation5FrameC2ERKS1_ @58
+    _ZN6libAF29Animation5FrameC2Ev @59
+    _ZN6libAF29Animation5FrameaSERKS1_ @60
+    _ZN6libAF29Animation6setKPSERKj @61
+    _ZN6libAF29Animation7setNameERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE @62
+    _ZN6libAF29Animation8addFrameERKNS0_5FrameE @63
+    _ZN6libAF29Animation8getFrameEj @64
+    _ZN6libAF29AnimationC1ERKS0_ @65
+    _ZN6libAF29AnimationC1Ev @66
+    _ZN6libAF29AnimationC2ERKS0_ @67
+    _ZN6libAF29AnimationC2Ev @68
+    _ZN6libAF29AnimationD1Ev @69
+    _ZN6libAF29AnimationD2Ev @70
+    _ZN6libAF29AnimationaSERKS0_ @71
+    _ZNK6libAF24Mesh12getBoneCountEv @72
+    _ZNK6libAF24Mesh14getVertexCountEv @73
+    _ZNK6libAF24Mesh16getTriangleCountEv @74
+    _ZNK6libAF24Mesh7getNameB5cxx11Ev @75
+    _ZNK6libAF25Sound11getBitDepthEv @76
+    _ZNK6libAF25Sound11getChannelsEv @77
+    _ZNK6libAF25Sound12getFrequencyEv @78
+    _ZNK6libAF25Sound7getNameB5cxx11Ev @79
+    _ZNK6libAF25Sound9getLengthEv @80
+    _ZNK6libAF27Texture8getWidthEv @81
+    _ZNK6libAF27Texture9getHeightEv @82
+    _ZNK6libAF29Animation13getFrameCountEv @83
+    _ZNK6libAF29Animation6getKPSEv @84
+    _ZNK6libAF29Animation7getNameB5cxx11Ev @85
+    _ZNK6libAF29Animation7getTimeEv @86
+    _ZNK6libAF29Animation9getFramesEv @87
+    _ZNSt6vectorIN6libAF24Mesh4BoneESaIS2_EE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPKS2_S4_EEEEvNS7_IPS2_S4_EET_SD_St20forward_iterator_tag @88
+    _ZNSt6vectorIN6libAF24Mesh4BoneESaIS2_EE19_M_emplace_back_auxIJRKS2_EEEvDpOT_ @89
+    _ZNSt6vectorIN6libAF24Mesh4BoneESaIS2_EED1Ev @90
+    _ZNSt6vectorIN6libAF24Mesh4BoneESaIS2_EEaSERKS4_ @91
+    _ZNSt6vectorIN6libAF24Mesh6VertexESaIS2_EE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPKS2_S4_EEEEvNS7_IPS2_S4_EET_SD_St20forward_iterator_tag @92
+    _ZNSt6vectorIN6libAF24Mesh6VertexESaIS2_EE19_M_emplace_back_auxIJRKS2_EEEvDpOT_ @93
+    _ZNSt6vectorIN6libAF24Mesh6VertexESaIS2_EEaSERKS4_ @94
+    _ZNSt6vectorIN6libAF24Mesh8TriangleESaIS2_EE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPKS2_S4_EEEEvNS7_IPS2_S4_EET_SD_St20forward_iterator_tag @95
+    _ZNSt6vectorIN6libAF24Mesh8TriangleESaIS2_EE19_M_emplace_back_auxIJRKS2_EEEvDpOT_ @96
+    _ZNSt6vectorIN6libAF24Mesh8TriangleESaIS2_EEaSERKS4_ @97
+    _ZNSt6vectorIN6libAF25SoundESaIS1_EE19_M_emplace_back_auxIJRKS1_EEEvDpOT_ @98
+    _ZNSt6vectorIN6libAF29Animation5FrameESaIS2_EE19_M_emplace_back_auxIJRKS2_EEEvDpOT_ @99
+    _ZNSt6vectorIN6libAF29Animation5FrameESaIS2_EED1Ev @100
+    _ZNSt6vectorIN6libAF29Animation5FrameESaIS2_EEaSERKS4_ @101
+    _ZNSt6vectorIN6libAF29AnimationESaIS1_EE19_M_emplace_back_auxIJRKS1_EEEvDpOT_ @102
+    _ZNSt6vectorISt5arrayIfLj3EESaIS1_EE19_M_emplace_back_auxIJRKS1_EEEvDpOT_ @103
+    _ZNSt6vectorISt5arrayIfLj3EESaIS1_EEaSERKS3_ @104
+    _ZNSt6vectorIjSaIjEE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPKjS1_EEEEvNS4_IPjS1_EET_SA_St20forward_iterator_tag @105
+    _ZNSt6vectorIjSaIjEE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPjS1_EEEEvS6_T_S7_St20forward_iterator_tag @106
+    _ZNSt6vectorIjSaIjEE19_M_emplace_back_auxIJRKjEEEvDpOT_ @107
+    _ZNSt6vectorIsSaIsEE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPsS1_EEEEvS6_T_S7_St20forward_iterator_tag @108
+    _ZNSt6vectorIsSaIsEEaSERKS1_ @109
+    _ZNSt6vectorItSaItEE7reserveEj @110
+    _ZTISt11logic_error @111 DATA
+    _ZTISt12out_of_range @112 DATA
+    _ZTISt16invalid_argument @113 DATA
+    _ZTISt9exception @114 DATA
+    _ZTSSt11logic_error @115 DATA
+    _ZTSSt12out_of_range @116 DATA
+    _ZTSSt16invalid_argument @117 DATA
+    _ZTSSt9exception @118 DATA
+    _get_output_format @119

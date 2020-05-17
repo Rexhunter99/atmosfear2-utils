@@ -1,11 +1,9 @@
 /******************************************************************
     @name		AtmosFEAR 2 Library
     @author 	Rexhunter99
-    @date		6th March 2017
-    @version	1
+    @date		12th June 2019
+    @version	2
 */
-#pragma once
-
 #ifndef LIBAF2_TEXTURE_H
 #define LIBAF2_TEXTURE_H
 
@@ -16,6 +14,14 @@
 
 namespace libAF2 {
 
+/***************************************************************************
+	@var enableExceptions
+	@namespace libAF2
+	Setting this to true will allow FileLoader static methods to throw C++
+	exceptions
+	@todo: Implement exceptions
+*/
+extern bool enableExceptions;
 
 class Texture
 {
@@ -28,69 +34,54 @@ public:
 	Texture& operator= (const Texture& texture);
 
 
-	const uint32_t	getVersion() const { return this->version; }
+	const uint32_t getVersion() const { return this->m_version; }
 
 	/***************************************************************************
 		@fn getPixels()
-		@param format Specifies what format the array will have the pixels formatted as.
-		@return float* Pointer to an array of bytes in the requested pixel format
-		Returns a copy of the internal pixel data that the user must safely free.
-		You can use std::unique_ptr to ensure no memory leaks occur.
+		@return vector<uint32_t> A vector of uint32_t elements in 32-bit color mode.
+		Returns a copy of the internal pixel data.
 	*/
-	const float*	getPixels( );
+	std::vector<uint32_t> getPixels( );
 
 	/***************************************************************************
 		@fn getPixelsInternal()
-		@param format Specifies what format the array will have the pixels formatted as.
-		@return float* Pointer to an array of bytes in the requested pixel format
+		@return vector<uint32_t>& A reference to a vector of uint32_t elements in 32-bit color mode.
 		This is an 'unsafe' method as it returns the pointer that is used internally
 		inside the class, any changes made to the pointer's memory are reflected in the
 		class.
 	*/
-	const float*	getPixelsInternal( ) const;
+	std::vector<uint32_t>& getPixelsInternal( );
 
 	/***************************************************************************
 		@fn getWidth()
 		@return uint32_t The width of the texture in pixels
 	*/
-	uint32_t		getWidth() const;
+	uint32_t getWidth() const;
 
 	/***************************************************************************
 		@fn getHeight()
 		@return uint32_t The height of the texture in pixels
 	*/
-	uint32_t		getHeight() const;
+	uint32_t getHeight() const;
 
 	/***************************************************************************
-		@fn setPixels( pixels, format )
+		@fn setPixels( width, height, pixels, format )
 		@param width The width in pixels of the texture
 		@param height The height of the texture in pixels
-		@param pixels A pointer to an array of pixels in <format>.
-		@param format Specifies what format the array will have the pixels formatted as.
+		@param pixels A vector of 'pixel' structures.
 		Copies the values data in <pixels> with the structure of <format> to the internal
 		floating point structure of the class.
 	*/
-	void	setPixels( const uint32_t& width, const uint32_t& height, const float* pixels  );
+	void setPixels( const uint32_t& width, const uint32_t& height, std::vector<uint32_t>& pixels  );
+	void setPixels( const uint32_t& width, const uint32_t& height, std::vector<uint16_t>& pixels  );
 
 
 private:
 
-	class Pixel
-	{
-	public:
-		float	r, g, b, a;
-
-		Pixel();
-		Pixel( float red, float green, float blue, float alpha );
-		Pixel(const Pixel& pixel);
-
-		Pixel& operator= (const Pixel& pixel);
-	};
-
-	const uint32_t	version = 2;
-	Pixel*			m_pixels;
-	uint32_t		m_width,
-					m_height;
+	const uint32_t			m_version = 2;
+	uint32_t				m_width,
+							m_height;
+	std::vector<uint32_t>	m_pixels;
 };
 
 

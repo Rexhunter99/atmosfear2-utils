@@ -43,3 +43,36 @@
 	<af2-animation.h>
 	<af2-sound.h>
 
+1559092342 source:m:\documents\github\atmosfear2-utils\libaf\animation.cpp
+	"af2-animation.h"
+	<exception>
+	<stdexcept>
+
+1560989030 m:\documents\github\atmosfear2-utils\libaf\af2-animation.h
+	<cstdint>
+	<array>
+	<string>
+	<vector>
+
+1559092342 source:m:\documents\github\atmosfear2-utils\libaf\mesh.cpp
+	"af2-mesh.h"
+	<exception>
+	<stdexcept>
+
+1560989038 m:\documents\github\atmosfear2-utils\libaf\af2-mesh.h
+	<cstdint>
+	<string>
+	<vector>
+
+1560757127 source:m:\documents\github\atmosfear2-utils\libaf\texture.cpp
+	"af2-texture.h"
+	<cmath>
+	<exception>
+	<stdexcept>
+	<cstring>
+
+1560989054 m:\documents\github\atmosfear2-utils\libaf\af2-texture.h
+	<cstdint>
+	<string>
+	<vector>
+

@@ -17,6 +17,16 @@
 
 namespace libAF2 {
 
+/***************************************************************************
+	@var enableExceptions
+	@namespace libAF2
+	Setting this to true will allow FileLoader static methods to throw C++
+	exceptions
+	@todo: Implement exceptions
+*/
+extern bool enableExceptions;
+
+// TODO: move Character to it's own header
 class Character
 {
 public:
@@ -29,6 +39,7 @@ public:
     std::vector<uint32_t>	anim_sound_table;
 };
 
+// TODO: Move Object to it's own header
 class Object
 {
 public:
@@ -90,14 +101,6 @@ public:
 		@todo: implement
     */
     static bool saveVertexTransformedList( const std::string& file_name, const Animation& animation );
-
-    /***************************************************************************
-		@var enableExceptions
-		Setting this to true will allow FileLoader static methods to throw C++
-		exceptions
-		@todo: Implement exceptions
-    */
-    static bool enableExceptions;
 };
 
 
